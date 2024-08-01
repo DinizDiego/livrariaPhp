@@ -9,6 +9,9 @@
         private string $login;
         private string $senha;
 
+        // Armazenamento de usuários
+        private static array $usuarios = [];
+
         //Construtor
         public function __construct(string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha){
 
@@ -20,86 +23,74 @@
             $this->senha = $senha;
         }//Fim do construtor
 
-        public function getNome():string
-        {
-            return $this->nome;
-        }//Fim do get nome
-
-        public function getEndereco():string
-        {
-            return $this->endereco;
-        }//Fim do get endereco
-
-        public function getTelefone():string
-        {
-            return $this->telefone;
-        }//Fim do get telefone
-
-        public function getDataDeNascimento():string
-        {
-            return $this->dataDeNascimento;
-        }//Fim do get dataDeNacimento
-        
-        public function getLogin():string
-        {
-            return $this->login;
-        }//Fim do get login
-        
-        public function getSenha():string
-        {
-            return $this->senha;
-        }//Fim do get senha
-
-        ///////////////////////
-        
-        public function setNome(string $nome):void
-        {
-            $this->nome = $nome;
-        }//Fim do get nome
-        
-        public function setEndereco(string $endereco):void
-        {
-            $this->endereco = $endereco;
-        }//Fim do get endereco
-
-        public function setTelefone(string $telefone):void
-        {
-            $this->telefone = $telefone;
-        }//Fim do get telefone
-
-        public function setDataDeNascimento($dataDeNascimento):string
-        {
-            $this->dataDeNascimento = $dataDeNascimento;
-        }//Fim do get dataDeNascimento
-
-        public function setLogin(string $login):void
-        {
-            $this->login = $login;
-        }//Fim do get login
-
-        public function setSenha(string $senha):void
-        {
-            $this->senha = $senha;
-        }//Fim do get senha
-
-        public function imprimir():string
-        {
-            return  "<br>Nome: "              .$this->getNome(). 
-                    "<br>Endereco: "          .$this->getEndereco().
-                    "<br>Telefone: "          .$this->getTelefone().
-                    "<br>Data de nascimento: ".$this->getDataDeNascimento().
-                    "<br>Login: "             .$this->getLogin().
-                    "<br>Senha: "             .$this->getSenha();
+        // Métodos Get e Set
+        public function __get(string $campo) {
+            return $this->$campo;
         }
 
-        function validarUsuario($resposta1, $resposta2, $login, $senha){
-            if(($resposta1 <> $login) && ($resposta2 <> $senha)){            
-                return "Usuário inválido! Verifique login ou senha e tente novamente."
-            }else{
-                return "Logado com sucesso!"
-            }//FIm do ifElse       
-        }//Fim do validarUsuario
+        public function __set(string $campo, string $valor) {
+            $this->$campo = $valor;
+        }
 
+        //Método para imprimir
+        public function imprimir():string
+        {
+            return  "<br>Nome: "              .$this->nome. 
+                    "<br>Endereco: "          .$this->endereco.
+                    "<br>Telefone: "          .$this->telefone.
+                    "<br>Data de nascimento: ".$this->dataDeNascimento.
+                    "<br>Login: "             .$this->login.
+                    "<br>Senha: "             .$this->senha;
+        }    
+
+        // Método para adicionar um usuário
+        public static function adicionarUsuario(Usuario $usuario) {
+            self::$usuarios[] = $usuario;
+        }//Fim do adcionar usuário
+
+        // Método para obter todos os usuários
+        public static function obterUsuarios(): array {
+            return self::$usuarios;
+        }//Fim do obter todos usuários
+
+        // Método para encontrar um usuário por login
+        public static function encontrarUsuarioPorLogin(string $login): ?Usuario {
+            foreach (self::$usuarios as $usuario) {
+                if ($usuario->login === $login) {
+                    return $usuario;
+                }
+            }
+            return null;
+        }//Fim do encontrar por login
+
+        // Método para atualizar um usuário
+        public static function atualizarUsuario(string $login, array $novosDados): bool {
+            $usuario = self::encontrarUsuarioPorLogin($login);
+            if ($usuario) {
+                foreach ($novosDados as $campo => $valor) {
+                    $usuario->__set($campo, $valor);
+                }
+                return true;
+            }
+            return false;
+        }//Fim do atualizar usuário
+
+        // Método para deletar um usuário
+        public static function deletarUsuario(string $login): bool {
+            foreach (self::$usuarios as $key => $usuario) {
+                if ($usuario->login === $login) {
+                    unset(self::$usuarios[$key]);
+                    return true;
+                }
+            }
+            return false;
+        }//Fim do deletar usuário
+
+        // Método para validar login
+        public static function validarLogin(string $login, string $senha): bool {
+            $usuario = self::encontrarUsuarioPorLogin($login);
+            return $usuario && $usuario->senha === $senha;
+        }
     }//Fim da classe
 
 
