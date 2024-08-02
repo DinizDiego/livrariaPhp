@@ -5,6 +5,13 @@
     require_once('Livros.php');
     require_once('Compra.php');
     require_once('Reserva.php');
+    require_once('DAO/Conexao.php');
+
+    use PHP\MODELO\DAO\Conexao;//Direcionar o arquivo
+
+    $conexao = new conexao();
+    $conexao->conectar();
+    
 
     $usuario1 = new Usuario("Diego", "Ruazinha", "11940209876", "12/10/2000", "user", "123456");
     $usuario2 = new Usuario("Diego", "Rua", "11940209872", "12/11/2000", "user2", "12345");
