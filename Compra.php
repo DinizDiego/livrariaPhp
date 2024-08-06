@@ -3,9 +3,9 @@ namespace PHP\Modelo;
 
     class Compra {
         //Variáveis
-        protected string $numeroCartao;
-        protected string $nomeCartao;
-        protected string $validade;
+        protected string $descricao;
+        protected string $dataDaCompra;
+        protected string $valor;
         protected string $cvv;
 
         //Método Construtor

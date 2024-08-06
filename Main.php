@@ -6,15 +6,27 @@
     require_once('Compra.php');
     require_once('Reserva.php');
     require_once('DAO/Conexao.php');
+    require_once('DAO/Consultar.php');
+    require_once('DAO/Atualizar.php');
+    require_once('DAO/Excluir.php');
 
     use PHP\MODELO\DAO\Conexao;//Direcionar o arquivo
+    use PHP\MODELO\DAO\Inserir;
+    use PHP\MODELO\DAO\Consultar;
+    use PHP\MODELO\DAO\Atualizar;
+    use PHP\MODELO\DAO\Excluir;
 
     $conexao = new conexao();
+    $consultar = new consultar();
+    $inserir = new inserir();
+    $atualizar = new atualizar();
+    $excluir = new excluir();
+
     $conexao->conectar();
     
 
-    $usuario1 = new Usuario("Diego", "Ruazinha", "11940209876", "12/10/2000", "user", "123456");
-    $usuario2 = new Usuario("Diego", "Rua", "11940209872", "12/11/2000", "user2", "12345");
+    $usuario1 = new Usuario("50794857765", "Diego", "Ruazinha", "11940209876", "12/10/2000", "user", "123456");
+    $usuario2 = new Usuario("50794857763", "Diego", "Rua", "11940209872", "12/11/2000", "user2", "12345");
 
     //Adicionando usuários
     Usuario::adicionarUsuario($usuario1);
@@ -26,25 +38,6 @@
         echo $usuario->imprimir();
         echo "<br><br>";
     }//Fim do foreach
-
-    //Validando login
-    $loginValido = Usuario::validarLogin('user', '123456');
-    echo $loginValido ? "Logado com sucesso user.<br>" : "Login inválido para user. Verifique nome de Usuário ou senha e tente novamente.<br>";
-    echo "<br><br>";
-
-    $loginValido = Usuario::validarLogin('user', '12345');
-    echo $loginValido ? "Logado com sucesso user2.<br>" : "Login inválido para user2. Verifique nome de Usuário ou senha e tente novamente.<br>";
-    echo "<br><br>";
-
-    //Atualizando usuário
-    Usuario::atualizarUsuario('user', ['endereco' => 'Rua', 'telefone' => '11987997634']);
-
-    //Imprimindo usuário atualizado
-    echo $usuario1->imprimir();
-    echo "<br><br>";
-
-    //Deletando um usuário
-    Usuario::deletarUsuario('user');  
 
     //Criando livros
     $livro1 = new Livros('One Piece', 1997, 'Eiichiro Oda', '28,30', 1);
@@ -67,4 +60,23 @@
     echo $reserva1->imprimir();
     echo "<br><br>";
 
+    $consultar->ConsultarIndividual($conexao
+                                    'cpf',
+                                    'nome',
+                                    'endereco',
+                                    'telefone',
+                                    'dataDeNascimento',
+                                    'login',
+                                    'senha'
+    );
+
+    $consultar->ConsultarTudo($conexao
+                              'usuario' 
+    );                                    
+
+    $atualizar->atualizarUsuario($conexao
+                                'usuario'                                       
+    );
+
+    $excluir->excluirUsuario($conexao, 'cpf');
 ?>
