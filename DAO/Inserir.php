@@ -8,17 +8,20 @@
     class inserir{
         public Conexao $conexao;
         public string $tabela;
+        public string $cpf;        
         public string $nome;        
         public string $endereco;
         public string $telefone;
         public string $dataDeNascimento;
         public string $login;
         public string $senha;
+        public int $admCpf;
 
-        function __construct(Conexao $conexao, string $tabela,string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha){
+        function __construct(Conexao $conexao, string $tabela, string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha, int $admCpf){
             
             $this->conexao = $conexao
             $this->tabela = $tabela
+            $this->cpf = $cpf;
             $this->nome = $nome;
             $this->endereco = $endereco;
             $this->telefone = $telefone;
@@ -32,7 +35,7 @@
             try{
                 $conn = $conexao->conectar();
                 $sql  = "insert into
-                 (nome, endereco, telefone, dataDeNascimento, login, senha)
+                 (cpf, nome, endereco, telefone, dataDeNascimento, login, senha, admCpf)
                  values ('')"
                  $result = mysqli_query($conn, $sql);
 

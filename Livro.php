@@ -2,19 +2,21 @@
     namespace PHP\MODELO; //Definir o local do projeto
 
     Class Livros{
+        protected int $codigoLivro;
         protected string $titulo;
         protected int $ano;
         protected string $autor;
-        protected string $preco;
-        protected int $estoque;
+        protected float $preco;
+        protected int $quantidade;
 
         //Método Construtor
-        public function __construct(string $titulo, int $ano, string $autor, string $preco, int $estoque) {
+        public function __construct(int $codigoLivro, string $titulo, int $ano, string $autor, string $preco, int $quantidade) {
+            $this->codigoLivro = $codigoLivro;
             $this->titulo = $titulo;
             $this->ano = $ano;
             $this->autor = $autor;
             $this->preco = $preco;
-            $this->estoque = $estoque;
+            $this->quantidade = $quantidade;
         }//Fim do método construtor
 
         //Métodos Get e Set
@@ -28,11 +30,12 @@
 
         //Método imprimir
         public function imprimir(): string {
-            return  "<br>Título do livro: " . $this->titulo.
-                    "<br>Ano de publicação do livro: " . $this->ano.
-                    "<br>Autor: " . $this->autor.
-                    "<br>Preço: " . $this->preco.
-                    "<br>Estoque: " . $this->estoque;
+            return  "<br>Código do livro: " .$this->codigoLivro.
+                    "<br>Título do livro: " .$this->titulo.
+                    "<br>Ano de publicação do livro: " .$this->ano.
+                    "<br>Autor: " .$this->autor.
+                    "<br>Preço unitário: " .$this->preco.
+                    "<br>Quantidade: " .$this->quantidade;
         }//Fim do imprimir
 
     }//Fim da class Livros

@@ -2,17 +2,21 @@
     namespace PHP\modelo;
 
     class Reserva {
-        protected string $produto;
-        protected string $email;
-        protected int $quantidade;
-        protected string $dataDaReserva;
+        protected int $codigoReserva;
+        protected string $dataReserva;
+        protected string $descricaoReserva;
+        protected int $clienteCpf;
+        protected int $livroCodigo;
+        protected int $admCpf;
     
         //Método construtor
-        public function __construct(string $produto, string $email, int $quantidade, string $dataDaReserva) {
-            $this->produto = $produto;
-            $this->email = $email;
-            $this->quantidade = $quantidade;
-            $this->dataDaReserva = $dataDaReserva;
+        public function __construct(int $codigoReserva, string $dataReserva, int $descricaoReserva, int $clienteCpf, int $livroCodigo, int $admCpf) {
+            $this->codigoReserva = $codigoReserva;
+            $this->dataReserva = $dataReserva;
+            $this->descricaoReserva = $descricaoReserva;
+            $this->clienteCpf = $clienteCpf;
+            $this->livroCodigo = $livroCodigo;
+            $this->admCpf = $admCpf;
         }//Fim do construtor
     
         //Método getSet
@@ -26,10 +30,12 @@
     
         //Método imprimir
         public function imprimir(): string {
-            return "<br>Produto: " . $this->produto.
-                   "<br>E-mail: " . $this->email.
-                   "<br>Quantidade: " . $this->quantidade.
-                   "<br>Data da reserva: " . $this->dataDaReserva;
+            return "<br>Código da reserva: " . $this->codigoReserva.
+                   "<br>Data da reserva: " . $this->dataReserva.
+                   "<br>Descrição da reserva: " . $this->descricaoReserva.
+                   "<br>CPF do cliente: " . $this->clienteCpf.
+                   "<br>Codigo do livro: " . $this->livroCodigo.
+                   "<br>CPF do adm: " . $this->admCpf;
         }//Fim do imprimir
     }//Fim da classe
 ?>

@@ -6,21 +6,18 @@
         private string $nome;        
         private string $endereco;
         private string $telefone;
-        private string $dataDeNascimento;
+        private string $dataNascimento;
         private string $login;
         private string $senha;
 
-        // Armazenamento de usuários
-        private static array $usuarios = [];
-
         //Construtor
-        public function __construct(string $cpf, string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha){
+        public function __construct(string $cpf, string $nome, string $endereco, string $telefone, string $dataNascimento, string $login, string $senha){
 
             $this->cpf = $cpf;
             $this->nome = $nome;
             $this->endereco = $endereco;
             $this->telefone = $telefone;
-            $this->dataDeNascimento = $dataDeNascimento;
+            $this->dataNascimento = $dataNascimento;
             $this->login = $login;
             $this->senha = $senha;
         }//Fim do construtor
@@ -41,7 +38,7 @@
                     "<br>Nome: "              .$this->nome. 
                     "<br>Endereco: "          .$this->endereco.
                     "<br>Telefone: "          .$this->telefone.
-                    "<br>Data de nascimento: ".$this->dataDeNascimento.
+                    "<br>Data de nascimento: ".$this->dataNascimento.
                     "<br>Login: "             .$this->login.
                     "<br>Senha: "             .$this->senha;
         }  

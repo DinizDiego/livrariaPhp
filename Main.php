@@ -2,7 +2,7 @@
     namespace PHP\MODELO; //Definir o local do projeto
 
     require_once('Usuario.php');
-    require_once('Livros.php');
+    require_once('Livro.php');
     require_once('Compra.php');
     require_once('Reserva.php');
     require_once('DAO/Conexao.php');
@@ -28,16 +28,9 @@
     $usuario1 = new Usuario("50794857765", "Diego", "Ruazinha", "11940209876", "12/10/2000", "user", "123456");
     $usuario2 = new Usuario("50794857763", "Diego", "Rua", "11940209872", "12/11/2000", "user2", "12345");
 
-    //Adicionando usuários
-    Usuario::adicionarUsuario($usuario1);
-    Usuario::adicionarUsuario($usuario2);
-
-    //Imprimindo todos usuários
-    foreach (Usuario::obterUsuarios() as $usuario) 
-    {
-        echo $usuario->imprimir();
-        echo "<br><br>";
-    }//Fim do foreach
+    //Imprimindo usuários
+    echo $usuario1->imprimir();
+    echo "<br><br>";
 
     //Criando livros
     $livro1 = new Livros('One Piece', 1997, 'Eiichiro Oda', '28,30', 1);
@@ -65,7 +58,7 @@
                                     'nome',
                                     'endereco',
                                     'telefone',
-                                    'dataDeNascimento',
+                                    'dataNascimento',
                                     'login',
                                     'senha'
     );
