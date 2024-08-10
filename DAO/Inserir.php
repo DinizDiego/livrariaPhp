@@ -7,27 +7,27 @@
 
     class inserir{
         public Conexao $conexao;
-        public string $tabela;
-        public string $cpf;        
-        public string $nome;        
-        public string $endereco;
-        public string $telefone;
-        public string $dataDeNascimento;
-        public string $login;
-        public string $senha;
-        public int $admCpf;
+        public string  $tabela;
+        public string  $cpf;        
+        public string  $nome;        
+        public string  $endereco;
+        public string  $telefone;
+        public string  $dataDeNascimento;
+        public string  $login;
+        public string  $senha;
+        public int     $admCpf;
 
         function __construct(Conexao $conexao, string $tabela, string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha, int $admCpf){
             
-            $this->conexao = $conexao
-            $this->tabela = $tabela
-            $this->cpf = $cpf;
-            $this->nome = $nome;
-            $this->endereco = $endereco;
-            $this->telefone = $telefone;
+            $this->conexao          = $conexao
+            $this->tabela           = $tabela
+            $this->cpf              = $cpf;
+            $this->nome             = $nome;
+            $this->endereco         = $endereco;
+            $this->telefone         = $telefone;
             $this->dataDeNascimento = $dataDeNascimento;
-            $this->login = $login;
-            $this->senha = $senha;
+            $this->login            = $login;
+            $this->senha            = $senha;
             
         }//Fim do construtor
 
@@ -35,8 +35,8 @@
             try{
                 $conn = $conexao->conectar();
                 $sql  = "insert into
-                 (cpf, nome, endereco, telefone, dataDeNascimento, login, senha, admCpf)
-                 values ('')"
+                 (codigo, cpf, nome, endereco, telefone, dataDeNascimento, login, senha)
+                 values ('$codigo', '$cpf', '$nome', '$endereco', '$telefone', '$dataDeNascimento', '$login', '$senha')"
                  $result = mysqli_query($conn, $sql);
 
                  //fecha a conexão

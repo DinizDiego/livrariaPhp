@@ -7,9 +7,9 @@
 
         function atualizarFuncionario(
             Conexao $conexao,
-            string $campo,
-            string $novoDado,
-            string $cpf
+            string  $campo,
+            string  $novoDado,
+            string  $cpf
         ){
             try{
                 $conn = $conexao->conectar();

@@ -2,24 +2,27 @@
     namespace PHP\MODELO; //Definir o local do projeto
 
     class Usuario{
+        private int    $codigo;
         private string $cpf;
         private string $nome;        
         private string $endereco;
         private string $telefone;
         private string $dataNascimento;
         private string $login;
-        private string $senha;
+        private string $senha;        
 
         //Construtor
-        public function __construct(string $cpf, string $nome, string $endereco, string $telefone, string $dataNascimento, string $login, string $senha){
+        public function __construct(int $codigo, string $cpf, string $nome, string $endereco, string $telefone, string $dataNascimento, string $login, string $senha){
 
-            $this->cpf = $cpf;
-            $this->nome = $nome;
-            $this->endereco = $endereco;
-            $this->telefone = $telefone;
+            $this->codigo         = $codigo;
+            $this->cpf            = $cpf;
+            $this->nome           = $nome;
+            $this->endereco       = $endereco;
+            $this->telefone       = $telefone;
             $this->dataNascimento = $dataNascimento;
-            $this->login = $login;
-            $this->senha = $senha;
+            $this->login          = $login;
+            $this->senha          = $senha;
+            $this->admCodigo      = $admCodigo;
         }//Fim do construtor
 
         // Métodos Get e Set
@@ -34,13 +37,14 @@
         //Método para imprimir
         public function imprimir():string
         {
-            return  "<br>CPF: "              .$this->cpf. 
-                    "<br>Nome: "              .$this->nome. 
-                    "<br>Endereco: "          .$this->endereco.
-                    "<br>Telefone: "          .$this->telefone.
-                    "<br>Data de nascimento: ".$this->dataNascimento.
-                    "<br>Login: "             .$this->login.
-                    "<br>Senha: "             .$this->senha;
+            return  "<br>Código do usuário: "  .$this->codigo. 
+                    "<br>CPF: "                .$this->cpf. 
+                    "<br>Nome: "               .$this->nome. 
+                    "<br>Endereco: "           .$this->endereco.
+                    "<br>Telefone: "           .$this->telefone.
+                    "<br>Data de nascimento: " .$this->dataNascimento.
+                    "<br>Login: "              .$this->login.
+                    "<br>Senha: "              .$this->senha;
         }  
     }//Fim da classe
 ?>

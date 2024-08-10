@@ -7,9 +7,9 @@
 
         function ConsultarIndividual(
             Conexao $conexao,
-            string $nomeCampo,
-            string $nomeTabela,
-            string $codigo)
+            string  $nomeCampo,
+            string  $nomeTabela,
+            string  $codigo)
         {
             try{
                 $conn = $conexao->conectar();

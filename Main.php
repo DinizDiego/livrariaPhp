@@ -5,7 +5,9 @@
     require_once('Livro.php');
     require_once('Compra.php');
     require_once('Reserva.php');
+    require_once('Endereco.php');
     require_once('DAO/Conexao.php');
+    require_once('DAO/Inserir.php');
     require_once('DAO/Consultar.php');
     require_once('DAO/Atualizar.php');
     require_once('DAO/Excluir.php');
@@ -16,11 +18,11 @@
     use PHP\MODELO\DAO\Atualizar;
     use PHP\MODELO\DAO\Excluir;
 
-    $conexao = new conexao();
+    $conexao   = new conexao();
     $consultar = new consultar();
-    $inserir = new inserir();
+    $inserir   = new inserir();
     $atualizar = new atualizar();
-    $excluir = new excluir();
+    $excluir   = new excluir();
 
     $conexao->conectar();
     
