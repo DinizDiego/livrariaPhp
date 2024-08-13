@@ -1,6 +1,8 @@
 <?php
     namespace PHP\Modelo\DAO;
+
     require_once("Conexao.php");
+    
     use PHP\Modelo\DAO\Conexao;
 
     class Consultar{
@@ -13,21 +15,22 @@
         {
             try{
                 $conn = $conexao->conectar();
-                $sql  = "select * from $nometabela where $nomeCampo = '$codigo'"
+                $sql  = "select * from $nometabela where $nomeCampo = '$codigo'";
                 $result = mysqli_query($conn,$sql);
 
                 while($dados = mysqli_fetch_Array($result)){
-                    if($dados["cpf"] == $codigo){
-                        echo "\nCPF: ".$dados{"cpf"}.
-                             "\nNome: ".$dados{"nome"}.
-                             "\nEndereco: ".$dados{"endereco"}.
-                             "\nTelefone: ".$dados{"telefone"}.
-                             "\nData de Nascimento: ".$dados{"dtNascimento"}.
-                             "\nLogin: ".$dados{"login"}.
-                             "\nSenha: ".$dados{"senha"};
+                    if($dados["codigo"] == $codigo){
+                        echo "\nCodigo do usuário: " .$dados["codigo"].
+                             "\nCPF: " .$dados["cpf"].
+                             "\nNome: " .$dados["nome"].
+                             "\nEndereco: " .$dados["endereco"].
+                             "\nTelefone: " .$dados["telefone"].
+                             "\nData de Nascimento: " .$dados["dtNascimento"].
+                             "\nLogin: " .$dados["login"].
+                             "\nSenha: " .$dados["senha"];
                         return;
                     }
-                    echo "CPF digitado não é válido!";        
+                    echo "Código de usuário digitado não é válido!";        
                 }//Fim do While
             }catch(Exception $erro){
                 echo $erro;
@@ -38,12 +41,18 @@
                                string $nomeTabela 
         ){
             try{
-                $conn = $conexao->();
+                $conn = $conexao->conectar();
                 $sql  = "select * from $nomeTabela";
                 $result = mysqli_query($conn,$sql);
 
                 while($dados = mysqli_fetch_Array($result)){
-                    echo "<br>CPF: ".$dados["cpf"].
+                    echo "<br>Código do usuário: " .$dados["codigo"].
+                         "<br>CPF: " .$dados["cpf"].
+                         "<br>Nome: " .$dados["nome"].
+                         "<br>Telefone: " .$dados["telefone"].
+                         "<br>Data de nascimento: " .$dados["dataNascimento"].
+                         "<br>Login: " .$dados["login"].
+                         "<br>Senha: " .$dados["senha"];
                 }//Fim do While
             }catch(Exception $erro){
                 echo $erro;

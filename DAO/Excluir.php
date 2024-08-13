@@ -1,9 +1,9 @@
 <?php
     namespace PHP\MODELO\DAO;
 
-    require_once('Conexao.php')
+    require_once('Conexao.php');
 
-    use PHP/MODELO/DAO/Conexao;
+    use PHP\MODELO\DAO\Conexao;
 
     class Excluir{
 
@@ -14,7 +14,7 @@
         {
             try{
                 $conn = $conexao->conectar();
-                $sql = "dele from funcionario where cpf = '$cpf'";
+                $sql = "delete from funcionario where cpf = '$cpf'";
                 $result= mysqli_query($conn,$sql);
 
                 mysqli_close($conn);
@@ -24,7 +24,7 @@
                     echo "Não foi possível excluir!";
                 }
             }catch(Exception $erro){
-                echo $erro
+                echo $erro;
             }//Fim do tryCatch
         }//Fim fo método
     }//Fim da classe

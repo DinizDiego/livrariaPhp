@@ -18,23 +18,21 @@
     use PHP\MODELO\DAO\Atualizar;
     use PHP\MODELO\DAO\Excluir;
 
-    $conexao   = new conexao();
-    $consultar = new consultar();
-    $inserir   = new inserir();
-    $atualizar = new atualizar();
-    $excluir   = new excluir();
-
-    $conexao->conectar();
-    
-
-    $usuario1 = new Usuario("50794857765", "Diego", "Ruazinha", "11940209876", "12/10/2000", "user", "123456");
-    $usuario2 = new Usuario("50794857763", "Diego", "Rua", "11940209872", "12/11/2000", "user2", "12345");
+    $conexao   = new Conexao();
+    $consultar = new Consultar();
+    $inserir   = new Inserir();
+    $atualizar = new Atualizar();
+    $excluir   = new Excluir();
 
     //Imprimindo usuários
-    echo $usuario1->imprimir();
+    echo $inserir->cadastrarEndereco($conexao, 1, 'Pq. Conha', 11, 'Mata', 'Macity', 'Mazol', 'RS', 'Braza', '94935-370');
     echo "<br><br>";
 
-    //Criando livros
+    /*Imprimindo usuários
+    echo $inserir->cadastrar($conexao, 1, '50794857765', 'Diego', 'Ruazinha', '11940209876', '12/10/2000', 'user', '123456'); 
+    echo "<br><br>";*/
+
+    /*Criando livros
     $livro1 = new Livros('One Piece', 1997, 'Eiichiro Oda', '28,30', 1);
 
     //Imprimindo livros
@@ -73,5 +71,6 @@
                                 'usuario'                                       
     );
 
-    $excluir->excluirUsuario($conexao, 'cpf');
+    $excluir->excluirUsuario($conexao, 'cpf');*/
+
 ?>

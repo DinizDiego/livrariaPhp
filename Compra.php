@@ -6,20 +6,15 @@ namespace PHP\Modelo;
         protected string $codigoCompra;
         protected string $descricao;
         protected string $dataCompra;
-        protected float  $valor;
-        protected int    $usuarioCpf;
-        protected int    $livroCodigo;
-        protected int    $admCpf;
+        protected int    $clienteCodigo;
 
         //Método Construtor
-        public function __construct(string $codigoCompra, string $descricao, string $dataCompra, float $valor, int $usuarioCpf, int $livroCodigo, int $adm) {
+        public function __construct(string $codigoCompra, string $descricao, string $dataCompra, int $codigoCliente)
+        {
             $this->codigoCompra = $codigoCompra;
             $this->descricao    = $descricao;
             $this->dataCompra   = $dataCompra;
-            $this->valor        = $valor;
-            $this->usuarioCpf   = $usuarioCpf;
-            $this->livroCodigo  = $livroCodigo;
-            $this->admCpf       = $admCpf;
+            $this->clienteCodigo = $clienteCodigo;
         }//Fim do construtor
 
         //Métodos Get e Set
@@ -36,10 +31,7 @@ namespace PHP\Modelo;
             return "<br>Código da compra: " .$this->codigoCompra.
                    "<br>Descrição: "        .$this->descricao.
                    "<br>Data da compra: "   .$this->dataCompra.
-                   "<br>Valor: "            .$this->valor.
-                   "<br>CPF do Usuário: "   .$this->usuarioCpf.
-                   "<br>Código do livro: "  .$this->livroCodigo.
-                   "<br>CPF do adm: "       .$this->admCpf;
+                   "<br>Código do cliente: " .$this->clienteCodigo;
         }//Fim do Imprimir
     }//Fim da classe
 ?>

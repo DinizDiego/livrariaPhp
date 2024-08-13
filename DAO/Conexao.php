@@ -5,7 +5,7 @@
 
         function conectar(){
             try{
-                $conn = mysqli_connect('localhost','root','','livrariaPhp');
+                $conn = mysqli_connect('localhost','root','','livrariaPhpp');
                 if($conn){
                     echo "Conectado com sucesso!";
                     //return $conn;
@@ -18,7 +18,4 @@
 
 
     }//Fim da classe
-
-    $conexao = new Conexao();
-    $conexao->conectar();
 ?>

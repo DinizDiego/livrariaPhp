@@ -19,9 +19,9 @@
                 
                 mysqli_close($conn);
                 if($result){
-                    echo "<br><br>Atualizado com sucesso!"
+                    echo "<br><br>Atualizado com sucesso!";
                 }else{
-                    "<br><br>Não foi possível atualizar!"
+                    echo "<br><br>Não foi possível atualizar!";
                 }//Fim do if
 
             }catch(Exception $erro){

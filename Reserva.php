@@ -7,16 +7,15 @@
         protected string $descricaoReserva;
         protected int    $clienteCodigo;
         protected int    $livroCodigo;
-        protected int    $admCodigo;
     
         //Método construtor
-        public function __construct(int $codigoReserva, string $dataReserva, int $descricaoReserva, int $clienteCodigo, int $livroCodigo, int $admCodigo) {
+        public function __construct(int $codigoReserva, string $dataReserva, int $descricaoReserva, int $clienteCodigo, int $livroCodigo) 
+        {
             $this->codigoReserva    = $codigoReserva;
             $this->dataReserva      = $dataReserva;
             $this->descricaoReserva = $descricaoReserva;
             $this->clienteCodigo    = $clienteCodigo;
             $this->livroCodigo      = $livroCodigo;
-            $this->admCodigo        = $admCodigo;
         }//Fim do construtor
     
         //Método getSet
@@ -34,8 +33,7 @@
                    "<br>Data da reserva: "      . $this->dataReserva.
                    "<br>Descrição da reserva: " . $this->descricaoReserva.
                    "<br>Código do cliente: "    . $this->clienteCodigo.
-                   "<br>Codigo do livro: "      . $this->livroCodigo.
-                   "<br>Código do adm: "        . $this->admCodigo;
+                   "<br>Codigo do livro: "      . $this->livroCodigo;
         }//Fim do imprimir
     }//Fim da classe
 ?>

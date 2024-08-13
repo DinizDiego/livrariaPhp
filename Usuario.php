@@ -12,7 +12,8 @@
         private string $senha;        
 
         //Construtor
-        public function __construct(int $codigo, string $cpf, string $nome, string $endereco, string $telefone, string $dataNascimento, string $login, string $senha){
+        public function __construct(int $codigo, string $cpf, string $nome, string $endereco, string $telefone, string $dataNascimento, string $login, string $senha)
+        {
 
             $this->codigo         = $codigo;
             $this->cpf            = $cpf;
@@ -22,7 +23,6 @@
             $this->dataNascimento = $dataNascimento;
             $this->login          = $login;
             $this->senha          = $senha;
-            $this->admCodigo      = $admCodigo;
         }//Fim do construtor
 
         // Métodos Get e Set

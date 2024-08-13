@@ -2,41 +2,39 @@
     namespace PHP\MODELO\DAO;
 
     require_once("Conexao.php");
+    require_once('Endereco.php');
 
     use PHP\MODELO\DAO\Conexao;
+    use PHP\MODELO\Endereco;
 
     class inserir{
         public Conexao $conexao;
-        public string  $tabela;
+        public string  $codigo;
         public string  $cpf;        
         public string  $nome;        
         public string  $endereco;
         public string  $telefone;
-        public string  $dataDeNascimento;
+        public string  $dataNascimento;
         public string  $login;
         public string  $senha;
-        public int     $admCpf;
 
-        function __construct(Conexao $conexao, string $tabela, string $nome, string $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha, int $admCpf){
-            
-            $this->conexao          = $conexao
-            $this->tabela           = $tabela
-            $this->cpf              = $cpf;
-            $this->nome             = $nome;
-            $this->endereco         = $endereco;
-            $this->telefone         = $telefone;
-            $this->dataDeNascimento = $dataDeNascimento;
-            $this->login            = $login;
-            $this->senha            = $senha;
-            
-        }//Fim do construtor
-
-        function cadastrar(){
+        function cadastrar(
+            Conexao $conexao,
+            int $codigo,
+            string $cpf,
+            string $nome,
+            string $telefone,
+            string $dataNascimento,
+            string $login,
+            string $senha,
+            int $codigoEndereco
+        )
+        {
             try{
                 $conn = $conexao->conectar();
-                $sql  = "insert into
-                 (codigo, cpf, nome, endereco, telefone, dataDeNascimento, login, senha)
-                 values ('$codigo', '$cpf', '$nome', '$endereco', '$telefone', '$dataDeNascimento', '$login', '$senha')"
+                $sql  = "Insert into
+                 (codigo, cpf, nome, telefone, dataNascimento, login, senha, enderecoCodigo)
+                 values ('$codigoCliente', '$cpf', '$nome', '$endereco', '$telefone', '$dataNascimento', '$login', '$senha', '$enderecoCodigo')";
                  $result = mysqli_query($conn, $sql);
 
                  //fecha a conexão
@@ -51,17 +49,38 @@
             }
         }//Fim do método
 
-        function cadastrarEndereco()
+        function cadastrarEndereco(
+            Conexao $conexao,
+            int $codEndereco,
+            string $logradouro,
+            int $numero,
+            string $bairro,
+            string $cidade,
+            string $estado,
+            string $uf,
+            string $pais,
+            string $cep
+        )
         {
             try{
+                $conn = $conexao->conectar();
+                $sql = "insert into endereco (codigo, logradouro, 
+                numero, bairro, cidade, estado, uf, pais, cep) values
+                ('$codEndereco', '$logradouro', '$numero', '$bairro', '$cidade',
+                '$estado', '$uf', '$pais', '$cep')";
+                $result = mysqli_query($conn,$sql);
 
+                //Fecha a conexao
+                mysqli_close($conn);
 
-
-
+                if($result){
+                    "<br>Endereço inserido com sucesso!";
+                }
+                "<br>Impossível inserir";
             }catch(Exception $erro){
                 echo $erro;
             }
-        }//FIm do método
+        }//Fim do método
 
 
     }//Fim da classe

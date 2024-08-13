@@ -12,7 +12,7 @@
         private string $pais;
         private string $cep;
 
-        public function __construct(string $logradouro,int $numero,string $bairro,string $cidade,string $estado,string $uf,string $pais,string $cep)
+        public function __construct(int $codigo, string $logradouro, int $numero, string $bairro, string $cidade, string $estado, string $uf, string $pais, string $cep)
         {
             $this->codigo     = $codigo;
             $this->logradouro = $logradouro;
